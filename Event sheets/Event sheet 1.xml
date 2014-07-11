@@ -3,8 +3,9 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Event sheet 1</name>
     <events>
+        <variable comment="cost of fire turret" constant="1" name="FireTurretCost" sid="1327756965631228" static="0" type="number">40</variable>
         <variable comment="boolean to toggle actions between levels" constant="0" name="midLevelActions" sid="8493476848423115" static="0" type="number">0</variable>
-        <variable comment="current level" constant="0" name="level" sid="7735567255060664" static="0" type="number">1</variable>
+        <variable comment="current level" constant="0" name="level" sid="7735567255060664" static="0" type="number">0</variable>
         <variable constant="0" name="numEnemies" sid="2534168424972754" static="0" type="number">0</variable>
         <variable comment="time between waves" constant="0" name="waveTime" sid="7895156088592598" static="0" type="number">0</variable>
         <variable comment="Checks to see if game has started." constant="0" name="gameStart" sid="5469581856877412" static="0" type="number">0</variable>
@@ -182,20 +183,29 @@
                         <action id="0" name="Set text" sid="8323432183676967" type="TextMoney">
                             <param id="0" name="Text">&quot;Money: &quot; &amp; money</param>
                         </action>
+                        <action id="0" name="Set text" sid="4541841504867848" type="TextLevel">
+                            <param id="0" name="Text">&quot;Level: &quot; &amp; level</param>
+                        </action>
+                        <action id="0" name="Set text" sid="7508754989198941" type="TextLives">
+                            <param id="0" name="Text">&quot;Lives: &quot; &amp; lives</param>
+                        </action>
                     </actions>
                     <sub-events>
-                        <event-block sid="8346619602235693">
+                        <event-block sid="916583268818168">
                             <conditions>
-                                <condition id="-14" name="Compare variable" sid="1934550993684968" type="System">
+                                <condition id="-14" name="Compare variable" sid="1674893232135516" type="System">
                                     <param id="0" name="Variable">waveTime</param>
                                     <param id="1" name="Comparison">4</param>
                                     <param id="2" name="Value">0</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-11" name="Subtract from" sid="9244304925094814" type="System">
+                                <action id="-11" name="Subtract from" sid="9871023183882452" type="System">
                                     <param id="0" name="Variable">waveTime</param>
                                     <param id="1" name="Value">dt</param>
+                                </action>
+                                <action id="0" name="Set text" sid="4921325035006247" type="TimeText">
+                                    <param id="0" name="Text">&quot;Time until next wave: &quot; &amp; waveTime</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -301,6 +311,34 @@
                             <param id="0" name="Variable">numEnemies</param>
                             <param id="1" name="Value">1</param>
                         </action>
+                        <action id="-10" name="Set value" sid="5017092863531772" type="Enemy">
+                            <param id="0" name="Instance variable">Health</param>
+                            <param id="1" name="Value">Enemy.Health + level * 4</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="6445362336042943">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="1027219737428862" type="Spawner">
+                            <param id="0" name="Instance variable">NumberOfSpawns</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="1083639841502246" type="System">
+                            <param id="0" name="Variable">numEnemies</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="3522944274780205" type="System">
+                            <param id="0" name="Variable">midLevelActions</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="7433530364172663" type="TimeText">
+                            <param id="0" name="Text">&quot;Number of enemies: &quot; &amp; numEnemies</param>
+                        </action>
                     </actions>
                 </event-block>
                 <event-block sid="4664184585120301">
@@ -315,11 +353,13 @@
                             <param id="1" name="Comparison">3</param>
                             <param id="2" name="Value">0</param>
                         </condition>
+                        <condition id="-14" name="Compare variable" sid="4779666825684488" type="System">
+                            <param id="0" name="Variable">midLevelActions</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
                     </conditions>
                     <actions>
-                        <action id="0" name="Set text" sid="6681760354076622" type="TimeText">
-                            <param id="0" name="Text">&quot;Time until next wave: &quot; &amp; waveTime</param>
-                        </action>
                         <action id="-9" name="Set value" sid="5252253793302556" type="System">
                             <param id="0" name="Variable">waveTime</param>
                             <param id="1" name="Value">15</param>
@@ -331,14 +371,8 @@
                     </actions>
                 </event-block>
                 <event-block sid="7404249135909398">
-                    <conditions>
-                        <condition id="-22" name="Else" sid="8155265912821254" type="System" />
-                    </conditions>
-                    <actions>
-                        <action id="0" name="Set text" sid="7433530364172663" type="TimeText">
-                            <param id="0" name="Text">&quot;Number of enemies: &quot; &amp; numEnemies</param>
-                        </action>
-                    </actions>
+                    <conditions />
+                    <actions />
                 </event-block>
             </sub-events>
         </event-group>
@@ -486,73 +520,6 @@
         </event-group>
         <event-group description="" sid="932306576524389" title="OnLoad Events">
             <sub-events>
-                <event-block sid="4162115310616811">
-                    <conditions>
-                        <condition id="-29" name="On load complete" sid="2688098524788507" type="System" />
-                    </conditions>
-                    <actions>
-                        <action id="3" name="Set at XY" sid="2221572773191023" type="Array">
-                            <param id="0" name="X">0</param>
-                            <param id="1" name="Y">0</param>
-                            <param id="2" name="Value">Point1.X</param>
-                        </action>
-                        <action id="3" name="Set at XY" sid="6395344503887014" type="Array">
-                            <param id="0" name="X">0</param>
-                            <param id="1" name="Y">1</param>
-                            <param id="2" name="Value">Point1.Y</param>
-                        </action>
-                        <action id="3" name="Set at XY" sid="1979533905916894" type="Array">
-                            <param id="0" name="X">1</param>
-                            <param id="1" name="Y">0</param>
-                            <param id="2" name="Value">Point2.X</param>
-                        </action>
-                        <action id="3" name="Set at XY" sid="9115200373402514" type="Array">
-                            <param id="0" name="X">1</param>
-                            <param id="1" name="Y">1</param>
-                            <param id="2" name="Value">Point2.Y</param>
-                        </action>
-                        <action id="3" name="Set at XY" sid="7280794906091996" type="Array">
-                            <param id="0" name="X">2</param>
-                            <param id="1" name="Y">0</param>
-                            <param id="2" name="Value">Point3.X</param>
-                        </action>
-                        <action id="3" name="Set at XY" sid="438592653574902" type="Array">
-                            <param id="0" name="X">2</param>
-                            <param id="1" name="Y">1</param>
-                            <param id="2" name="Value">Point3.Y</param>
-                        </action>
-                        <action id="3" name="Set at XY" sid="8494363233146039" type="Array">
-                            <param id="0" name="X">3</param>
-                            <param id="1" name="Y">0</param>
-                            <param id="2" name="Value">Point4.X</param>
-                        </action>
-                        <action id="3" name="Set at XY" sid="3542911634427153" type="Array">
-                            <param id="0" name="X">3</param>
-                            <param id="1" name="Y">1</param>
-                            <param id="2" name="Value">Point4.Y</param>
-                        </action>
-                        <action id="3" name="Set at XY" sid="3414188400686167" type="Array">
-                            <param id="0" name="X">4</param>
-                            <param id="1" name="Y">0</param>
-                            <param id="2" name="Value">112</param>
-                        </action>
-                        <action id="3" name="Set at XY" sid="9514587930013026" type="Array">
-                            <param id="0" name="X">4</param>
-                            <param id="1" name="Y">1</param>
-                            <param id="2" name="Value">448</param>
-                        </action>
-                        <action id="3" name="Set at XY" sid="4168841092096403" type="Array">
-                            <param id="0" name="X">5</param>
-                            <param id="1" name="Y">0</param>
-                            <param id="2" name="Value">112</param>
-                        </action>
-                        <action id="3" name="Set at XY" sid="7206430345655131" type="Array">
-                            <param id="0" name="X">5</param>
-                            <param id="1" name="Y">1</param>
-                            <param id="2" name="Value">624</param>
-                        </action>
-                    </actions>
-                </event-block>
                 <event-block sid="9536823174745537">
                     <conditions>
                         <condition id="-11" name="For Each" sid="2889635929971819" type="System">
@@ -646,16 +613,32 @@
                             <param id="2" name="Value">1</param>
                         </condition>
                     </conditions>
-                    <actions>
-                        <action id="-10" name="Add to" sid="3610363564330176" type="System">
-                            <param id="0" name="Variable">level</param>
-                            <param id="1" name="Value">1</param>
-                        </action>
-                        <action id="-11" name="Add to" sid="6055056011138594" type="Spawner">
-                            <param id="0" name="Instance variable">baseNumSpawns</param>
-                            <param id="1" name="Value">1</param>
-                        </action>
-                    </actions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="1314958066782867">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="8641449743955863" type="System">
+                                    <param id="0" name="Variable">waveTime</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="3610363564330176" type="System">
+                                    <param id="0" name="Variable">level</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="1393555166553645" type="Spawner">
+                                    <param id="0" name="Instance variable">NumberOfSpawns</param>
+                                    <param id="1" name="Value">Spawner.baseNumSpawns + level</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="279772811745781" type="System">
+                                    <param id="0" name="Variable">midLevelActions</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
             </sub-events>
         </event-group>
@@ -845,6 +828,11 @@
                                 <condition id="1" name="Is overlapping another object" sid="2927791384752237" type="turret">
                                     <param id="0" name="Object">TurretBase</param>
                                 </condition>
+                                <condition id="-14" name="Compare variable" sid="8284872725338139" type="System">
+                                    <param id="0" name="Variable">money</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">FIRETURRETCOST</param>
+                                </condition>
                             </conditions>
                             <actions>
                                 <action id="4" name="Set animation" sid="2238501726752853" type="TurretBase">
@@ -857,7 +845,15 @@
                                 </action>
                                 <action id="-11" name="Add to" sid="4660108255634523" type="turret">
                                     <param id="0" name="Instance variable">damage</param>
-                                    <param id="1" name="Value">2</param>
+                                    <param id="1" name="Value">3</param>
+                                </action>
+                                <action id="-11" name="Add to" sid="7774351328025153" type="turret">
+                                    <param id="0" name="Instance variable">range</param>
+                                    <param id="1" name="Value">50</param>
+                                </action>
+                                <action id="-11" name="Subtract from" sid="9999618071013745" type="System">
+                                    <param id="0" name="Variable">money</param>
+                                    <param id="1" name="Value">FIRETURRETCOST</param>
                                 </action>
                             </actions>
                         </event-block>

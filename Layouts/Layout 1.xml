@@ -1862,7 +1862,7 @@
                         <collisions>Enabled</collisions>
                     </properties>
                     <instance-variables>
-                        <life>2</life>
+                        <life>1</life>
                         <damage>4</damage>
                     </instance-variables>
                     <behavior-instances>
@@ -1984,11 +1984,11 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>1152</x>
-                        <y>256</y>
+                        <x>1200</x>
+                        <y>288</y>
                         <z>0</z>
-                        <width>64</width>
-                        <height>64</height>
+                        <width>71.554176331</width>
+                        <height>71.554176331</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -2186,94 +2186,6 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Point1" uid="48">
-                    <properties>
-                        <initial-visibility>Visible</initial-visibility>
-                        <initial-animation>Default</initial-animation>
-                        <initial-frame>0</initial-frame>
-                        <collisions>Enabled</collisions>
-                    </properties>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>1008</x>
-                        <y>112</y>
-                        <z>0</z>
-                        <width>16</width>
-                        <height>16</height>
-                        <depth>0</depth>
-                        <hotspotX>0.5</hotspotX>
-                        <hotspotY>0.5</hotspotY>
-                        <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
-                <instance type="Point2" uid="49">
-                    <properties>
-                        <initial-visibility>Visible</initial-visibility>
-                        <initial-animation>Default</initial-animation>
-                        <initial-frame>0</initial-frame>
-                        <collisions>Enabled</collisions>
-                    </properties>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>1008</x>
-                        <y>288</y>
-                        <z>0</z>
-                        <width>16</width>
-                        <height>16</height>
-                        <depth>0</depth>
-                        <hotspotX>0.5</hotspotX>
-                        <hotspotY>0.5</hotspotY>
-                        <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
-                <instance type="Point3" uid="50">
-                    <properties>
-                        <initial-visibility>Visible</initial-visibility>
-                        <initial-animation>Default</initial-animation>
-                        <initial-frame>0</initial-frame>
-                        <collisions>Enabled</collisions>
-                    </properties>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>240</x>
-                        <y>288</y>
-                        <z>0</z>
-                        <width>16</width>
-                        <height>16</height>
-                        <depth>0</depth>
-                        <hotspotX>0.5</hotspotX>
-                        <hotspotY>0.5</hotspotY>
-                        <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
-                <instance type="Point4" uid="51">
-                    <properties>
-                        <initial-visibility>Visible</initial-visibility>
-                        <initial-animation>Default</initial-animation>
-                        <initial-frame>0</initial-frame>
-                        <collisions>Enabled</collisions>
-                    </properties>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>240</x>
-                        <y>448</y>
-                        <z>0</z>
-                        <width>16</width>
-                        <height>16</height>
-                        <depth>0</depth>
-                        <hotspotX>0.5</hotspotX>
-                        <hotspotY>0.5</hotspotY>
-                        <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
                 <instance type="TowerScreen" uid="27">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
@@ -2372,8 +2284,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>1392</x>
-                        <y>224</y>
+                        <x>1616</x>
+                        <y>112</y>
                         <z>0</z>
                         <width>388.235290527</width>
                         <height>388.235290527</height>
@@ -2402,7 +2314,7 @@
                         <x>464</x>
                         <y>32</y>
                         <z>0</z>
-                        <width>384</width>
+                        <width>528</width>
                         <height>32</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
@@ -2415,7 +2327,7 @@
                     <properties>
                         <text></text>
                         <initial-visibility>Visible</initial-visibility>
-                        <font>Lucida Console,-27,400,0</font>
+                        <font>Lucida Console,-27,700,0</font>
                         <color>0,0,0</color>
                         <horizontal-alignment>Left</horizontal-alignment>
                         <vertical-alignment>Top</vertical-alignment>
@@ -2426,8 +2338,116 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>80</x>
+                        <x>64</x>
                         <y>32</y>
+                        <z>0</z>
+                        <width>200</width>
+                        <height>30</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="MenuTurretText" uid="22">
+                    <properties>
+                        <text>Generic Turret</text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Lucida Console,-27,400,0</font>
+                        <color>255,204,102</color>
+                        <horizontal-alignment>Left</horizontal-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
+                        <hotspot>Top-left</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>1152</x>
+                        <y>336</y>
+                        <z>0</z>
+                        <width>128</width>
+                        <height>64</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="TextLevel" uid="33">
+                    <properties>
+                        <text></text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Lucida Console,-27,700,0</font>
+                        <color>0,0,0</color>
+                        <horizontal-alignment>Left</horizontal-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
+                        <hotspot>Top-left</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>288</x>
+                        <y>32</y>
+                        <z>0</z>
+                        <width>200</width>
+                        <height>30</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="TextTitle" uid="116">
+                    <properties>
+                        <text>Buy Turret</text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Impact,-33,400,0</font>
+                        <color>255,204,51</color>
+                        <horizontal-alignment>Left</horizontal-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
+                        <hotspot>Top-left</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>1136</x>
+                        <y>192</y>
+                        <z>0</z>
+                        <width>240</width>
+                        <height>80</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="TextLives" uid="48">
+                    <properties>
+                        <text></text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Lucida Console,-27,700,0</font>
+                        <color>0,0,0</color>
+                        <horizontal-alignment>Left</horizontal-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
+                        <hotspot>Top-left</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>1072</x>
+                        <y>608</y>
                         <z>0</z>
                         <width>200</width>
                         <height>30</height>
