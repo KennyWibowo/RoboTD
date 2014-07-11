@@ -15,7 +15,7 @@
    id="svg2990"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="New document 1">
+   sodipodi:docname="background2.svg">
   <defs
      id="defs2992">
     <linearGradient
@@ -49,7 +49,7 @@
        fx="816.66669"
        fy="801.32068"
        r="773.33331"
-       gradientTransform="matrix(1.2048256,-0.51570922,0.89163385,1.0402078,-878.08071,305.33889)"
+       gradientTransform="matrix(1.2851473,-0.58017287,0.95107611,1.1702338,-1000.6194,276.00625)"
        gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
@@ -59,11 +59,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.3"
-     inkscape:cx="502.7541"
-     inkscape:cy="578.42952"
+     inkscape:zoom="0.42426407"
+     inkscape:cx="913.40994"
+     inkscape:cy="520.98114"
      inkscape:document-units="px"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1600"
      inkscape:window-height="837"
@@ -85,16 +85,7 @@
   <g
      inkscape:groupmode="layer"
      id="layer2"
-     inkscape:label="Border">
-    <rect
-       style="fill:#333333"
-       id="rect3041"
-       width="1920"
-       height="1080"
-       x="0"
-       y="0"
-       ry="4.2276978" />
-  </g>
+     inkscape:label="Border" />
   <g
      id="layer1"
      inkscape:label="Foreground"
@@ -103,10 +94,10 @@
     <rect
        style="fill:url(#radialGradient3038);fill-opacity:1"
        id="rect3030"
-       width="1800"
-       height="960"
-       x="60"
-       y="60"
-       ry="4.2276978" />
+       width="1920"
+       height="1080"
+       x="0"
+       y="0"
+       ry="4.7561603" />
   </g>
 </svg>
