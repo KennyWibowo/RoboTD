@@ -15,7 +15,7 @@
    id="svg4112"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="robot1_frame3.svg">
+   sodipodi:docname="robot1_frame7.svg">
   <defs
      id="defs4114">
     <linearGradient
@@ -60,7 +60,7 @@
        x2="20"
        y2="4"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(12.83845,-46.73429)" />
+       gradientTransform="translate(-68.838465,-17.265716)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient4269"
@@ -120,7 +120,7 @@
      inkscape:zoom="11"
      inkscape:cx="42.777494"
      inkscape:cy="32.762504"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer4"
      showgrid="true"
      inkscape:document-units="px"
      inkscape:grid-bbox="true"
@@ -141,7 +141,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -220,9 +220,9 @@
        id="rect4126"
        width="30"
        height="40"
-       x="25.838457"
-       y="-34.734287"
-       transform="matrix(0.8660254,0.5,0.5,-0.8660254,0,0)" />
+       x="-55.838459"
+       y="-5.2657127"
+       transform="matrix(-0.8660254,-0.5,-0.5,0.8660254,0,0)" />
   </g>
   <g
      inkscape:groupmode="layer"
