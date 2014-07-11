@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2project>
-    <name>New project</name>
+    <name>Robo TD</name>
     <description></description>
     <version>1.0</version>
     <author></author>
@@ -20,6 +20,7 @@
         <plugin author="Scirra" id="Spritefont2" version="1">Sprite font</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TextBox" version="1">Text box</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
         <plugin author="Zack0Wack0/Scirra" id="WebStorage" version="1">WebStorage</plugin>
         <plugin author="Scirra.com" id="win8" version="1">Windows 8</plugin>
@@ -169,6 +170,9 @@
                 <animation framecount="1" loop="0" name="FireTurret" pingpong="0" repeatcount="1" repeatto="0" sid="6231032370508717" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
+                <animation framecount="1" loop="0" name="WaterTurret" pingpong="0" repeatcount="1" repeatto="0" sid="6583754481681975" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
             </animation-folder>
         </object-type>
         <object-type name="bullet" sid="2506526755883617">
@@ -212,7 +216,8 @@
                 <instance-variable comment="i&apos;m lazy" name="baseNumSpawns" sid="6863452684190679" type="number" />
             </instance-variables>
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1635952336626321" speed="5">
+                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1635952336626321" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
@@ -324,6 +329,7 @@
             <plugin id="Sprite" />
             <instance-variables>
                 <instance-variable name="openScreen" sid="4886008800252502" type="number" />
+                <instance-variable comment="cost; same as menu cost" name="cost" sid="9815765737004011" type="number" />
             </instance-variables>
             <container>
                 <type>TurretBase</type>
@@ -334,6 +340,9 @@
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
                 <animation framecount="1" loop="0" name="FireTurret" pingpong="0" repeatcount="1" repeatto="0" sid="6572425121583192" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="WaterTurret" pingpong="0" repeatcount="1" repeatto="0" sid="9201094952162307" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
@@ -487,6 +496,10 @@
             <container>
                 <type>UpgradeScreen</type>
                 <type>UpgradeButtonFire</type>
+                <type>UpgradeScreenWater</type>
+                <type>UpgradeButtonLightning</type>
+                <type>UpgradeButtonEarth</type>
+                <type>UpgradeButtonAir</type>
             </container>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="7384552073121253" speed="5">
@@ -499,6 +512,10 @@
             <container>
                 <type>UpgradeScreen</type>
                 <type>UpgradeButtonFire</type>
+                <type>UpgradeScreenWater</type>
+                <type>UpgradeButtonLightning</type>
+                <type>UpgradeButtonEarth</type>
+                <type>UpgradeButtonAir</type>
             </container>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1658962545462511" speed="5">
@@ -519,6 +536,115 @@
             <plugin id="Text" />
         </object-type>
         <object-type name="TextLives" sid="9433681826705028">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="UpgradeScreenWater" sid="2820556058479522">
+            <plugin id="Sprite" />
+            <container>
+                <type>UpgradeScreen</type>
+                <type>UpgradeButtonFire</type>
+                <type>UpgradeScreenWater</type>
+                <type>UpgradeButtonLightning</type>
+                <type>UpgradeButtonEarth</type>
+                <type>UpgradeButtonAir</type>
+            </container>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="3737924410403226" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Text" sid="5001165996118286">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="StartMenuText" sid="1493377382506873">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="RobotTitleText" sid="9779224785289637">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="TextUpgrade" sid="6435117776342952">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="TextBackground" sid="9934918049143996">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="3382269336315743" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="TextUpgrade2" sid="3799052100348881">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="DeadEnemy" sid="8855389591259281">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="5" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="3006465374387115" speed="5">
+                    <frame duration="1" hotspotX="0.47619" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.47619" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.526316" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.588235" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.625" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="UpgradeButtonLightning" sid="960571628567003">
+            <plugin id="Sprite" />
+            <container>
+                <type>UpgradeScreen</type>
+                <type>UpgradeButtonFire</type>
+                <type>UpgradeScreenWater</type>
+                <type>UpgradeButtonLightning</type>
+                <type>UpgradeButtonEarth</type>
+                <type>UpgradeButtonAir</type>
+            </container>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="837641642393609" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="UpgradeButtonAir" sid="7203468475937794">
+            <plugin id="Sprite" />
+            <container>
+                <type>UpgradeScreen</type>
+                <type>UpgradeButtonFire</type>
+                <type>UpgradeScreenWater</type>
+                <type>UpgradeButtonLightning</type>
+                <type>UpgradeButtonEarth</type>
+                <type>UpgradeButtonAir</type>
+            </container>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="124802108412128" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="TiledBackground" sid="980141174356923">
+            <plugin id="TiledBg" />
+            <texture />
+        </object-type>
+        <object-type name="UpgradeButtonEarth" sid="8243087072863725">
+            <plugin id="Sprite" />
+            <container>
+                <type>UpgradeScreen</type>
+                <type>UpgradeButtonFire</type>
+                <type>UpgradeScreenWater</type>
+                <type>UpgradeButtonLightning</type>
+                <type>UpgradeButtonEarth</type>
+                <type>UpgradeButtonAir</type>
+            </container>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="9505373745318469" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="RoboTDTitle" sid="9729577423625173">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="costText" sid="1268889719483577">
             <plugin id="Text" />
         </object-type>
     </object-folder>

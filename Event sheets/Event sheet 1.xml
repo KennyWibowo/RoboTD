@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Event sheet 1</name>
     <events>
+        <variable comment="cost of water turret" constant="1" name="WATERTURRETCOST" sid="6721271027192513" static="0" type="number">50</variable>
         <variable comment="cost of fire turret" constant="1" name="FireTurretCost" sid="1327756965631228" static="0" type="number">40</variable>
         <variable comment="boolean to toggle actions between levels" constant="0" name="midLevelActions" sid="8493476848423115" static="0" type="number">0</variable>
         <variable comment="current level" constant="0" name="level" sid="7735567255060664" static="0" type="number">0</variable>
@@ -16,6 +17,24 @@
         <comment>Issue: how to change camera view</comment>
         <event-group description="Events of Enemy" sid="7112988378609428" title="Enemy">
             <sub-events>
+                <event-block sid="3926468169512404">
+                    <conditions>
+                        <condition id="4" name="On finished" sid="2017715119617162" type="DeadEnemy">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" sid="2796132786978473" type="System">
+                            <param id="0" name="Variable">money</param>
+                            <param id="1" name="Value">Enemy.reward</param>
+                        </action>
+                        <action id="-11" name="Subtract from" sid="4089617764952808" type="System">
+                            <param id="0" name="Variable">numEnemies</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="1963824367568823" type="DeadEnemy" />
+                    </actions>
+                </event-block>
                 <event-block sid="738821829303006">
                     <conditions>
                         <condition id="-7" name="Compare instance variable" sid="8399300903454378" type="Enemy">
@@ -25,15 +44,12 @@
                         </condition>
                     </conditions>
                     <actions>
+                        <action id="0" name="Spawn another object" sid="2749581281969164" type="Enemy">
+                            <param id="0" name="Object">DeadEnemy</param>
+                            <param id="1" name="Layer">GAMELAYER</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
                         <action id="-9" name="Destroy" sid="4874466313010411" type="Enemy" />
-                        <action id="-10" name="Add to" sid="2796132786978473" type="System">
-                            <param id="0" name="Variable">money</param>
-                            <param id="1" name="Value">Enemy.reward</param>
-                        </action>
-                        <action id="-11" name="Subtract from" sid="4089617764952808" type="System">
-                            <param id="0" name="Variable">numEnemies</param>
-                            <param id="1" name="Value">1</param>
-                        </action>
                     </actions>
                 </event-block>
                 <event-block sid="3624492225895811">
@@ -296,7 +312,7 @@
                     <actions>
                         <action id="-10" name="Set value" sid="1770597677753703" type="Spawner">
                             <param id="0" name="Instance variable">cooldown</param>
-                            <param id="1" name="Value">maxCD</param>
+                            <param id="1" name="Value">random(maxCD - 0.5, maxCD)</param>
                         </action>
                         <action id="0" name="Spawn another object" sid="197228297368158" type="Spawner">
                             <param id="0" name="Object">Enemy</param>
@@ -362,7 +378,7 @@
                     <actions>
                         <action id="-9" name="Set value" sid="5252253793302556" type="System">
                             <param id="0" name="Variable">waveTime</param>
-                            <param id="1" name="Value">15</param>
+                            <param id="1" name="Value">5</param>
                         </action>
                         <action id="-9" name="Set value" sid="3466762666973352" type="System">
                             <param id="0" name="Variable">midLevelActions</param>
@@ -453,6 +469,10 @@
                                 </action>
                                 <action id="-11" name="Subtract from" sid="156614933740927" type="System">
                                     <param id="0" name="Variable">money</param>
+                                    <param id="1" name="Value">MenuTurret.cost</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="5896226595548858" type="TurretBase">
+                                    <param id="0" name="Instance variable">cost</param>
                                     <param id="1" name="Value">MenuTurret.cost</param>
                                 </action>
                             </actions>
@@ -642,7 +662,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group collapsed="1" description="" sid="1673033768809943" title="Tower Screen">
+        <event-group description="" sid="1673033768809943" title="Tower Screen">
             <sub-events>
                 <variable comment="Check if screen exists" constant="0" name="ScreenExists" sid="9137292440441991" static="0" type="number">0</variable>
                 <event-block sid="2959535697716615">
@@ -729,44 +749,42 @@
                             <param id="2" name="Object clicked">TextScrnButton2</param>
                         </condition>
                     </conditions>
-                    <actions />
-                    <sub-events>
-                        <event-block sid="8780042044180228">
-                            <conditions>
-                                <condition id="-14" name="Compare variable" sid="1063832900997759" type="System">
-                                    <param id="0" name="Variable">money</param>
-                                    <param id="1" name="Comparison">5</param>
-                                    <param id="2" name="Value">40</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="0" name="Spawn another object" sid="1573984535959992" type="TowerScreen">
-                                    <param id="0" name="Object">UpgradeScreen</param>
-                                    <param id="1" name="Layer">GAMELAYER</param>
-                                    <param id="2" name="Image point">0</param>
-                                </action>
-                                <action id="-9" name="Destroy" sid="6973157573404051" type="TowerScreen" />
-                                <action id="-3" name="Set position" sid="2821229087773516" type="UpgradeScreen">
-                                    <param id="0" name="X">TowerScreen.X</param>
-                                    <param id="1" name="Y">TowerScreen.Y - 48</param>
-                                </action>
-                                <action id="-3" name="Set position" sid="751630320076729" type="UpgradeButtonFire">
-                                    <param id="0" name="X">UpgradeScreen.X - 64</param>
-                                    <param id="1" name="Y">UpgradeScreen.Y</param>
-                                </action>
-                                <action id="-9" name="Set value" sid="7585340452976018" type="System">
-                                    <param id="0" name="Variable">ScreenExists</param>
-                                    <param id="1" name="Value">0</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="8554412454679309">
-                            <conditions>
-                                <condition id="-22" name="Else" sid="1179132882067943" type="System" />
-                            </conditions>
-                            <actions />
-                        </event-block>
-                    </sub-events>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="1573984535959992" type="TowerScreen">
+                            <param id="0" name="Object">UpgradeScreen</param>
+                            <param id="1" name="Layer">GAMELAYER</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="6973157573404051" type="TowerScreen" />
+                        <action id="-3" name="Set position" sid="2821229087773516" type="UpgradeScreen">
+                            <param id="0" name="X">TowerScreen.X</param>
+                            <param id="1" name="Y">TowerScreen.Y - 48</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="751630320076729" type="UpgradeButtonFire">
+                            <param id="0" name="X">UpgradeScreen.X - 80</param>
+                            <param id="1" name="Y">UpgradeScreen.Y + 40</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="2212066389218552" type="UpgradeScreenWater">
+                            <param id="0" name="X">UpgradeScreen.X + 80</param>
+                            <param id="1" name="Y">UpgradeScreen.Y + 40</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="7585340452976018" type="System">
+                            <param id="0" name="Variable">ScreenExists</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="7997795219624078" type="UpgradeButtonLightning">
+                            <param id="0" name="X">UpgradeScreen.X - 80</param>
+                            <param id="1" name="Y">UpgradeScreen.Y - 40</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="2094455577741174" type="UpgradeButtonAir">
+                            <param id="0" name="X">UpgradeScreen.X - 80</param>
+                            <param id="1" name="Y">UpgradeScreen.Y - 40</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="3435211654896581" type="UpgradeButtonEarth">
+                            <param id="0" name="X">UpgradeScreen.X</param>
+                            <param id="1" name="Y">UpgradeScreen.Y - 40</param>
+                        </action>
+                    </actions>
                 </event-block>
                 <event-block sid="370207275984555">
                     <conditions>
@@ -855,9 +873,138 @@
                                     <param id="0" name="Variable">money</param>
                                     <param id="1" name="Value">FIRETURRETCOST</param>
                                 </action>
+                                <action id="-10" name="Set value" sid="9246189517165879" type="TurretBase">
+                                    <param id="0" name="Instance variable">openScreen</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-11" name="Add to" sid="9277201062511812" type="TurretBase">
+                                    <param id="0" name="Instance variable">cost</param>
+                                    <param id="1" name="Value">FIRETURRETCOST / 2</param>
+                                </action>
                             </actions>
                         </event-block>
                     </sub-events>
+                </event-block>
+                <event-block sid="194970955989708">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="7315222098993084" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">UpgradeScreenWater</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="6420303395869749" type="UpgradeScreen" />
+                    </actions>
+                    <sub-events>
+                        <event-block sid="2690542073114595">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="5729214020800657" type="TurretBase">
+                                    <param id="0" name="Instance variable">openScreen</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                                <condition id="1" name="Is overlapping another object" sid="1596351735668691" type="turret">
+                                    <param id="0" name="Object">TurretBase</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="108119851831255" type="System">
+                                    <param id="0" name="Variable">money</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">WATERTURRETCOST</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="60367891876017" type="TurretBase">
+                                    <param id="0" name="Animation">&quot;WaterTurret&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="8216394059841354" type="turret">
+                                    <param id="0" name="Animation">&quot;WaterTurret&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="-12" name="Subtract from" sid="929777848036188" type="turret">
+                                    <param id="0" name="Instance variable">cooldown</param>
+                                    <param id="1" name="Value">turret.cooldown / 4</param>
+                                </action>
+                                <action id="-11" name="Add to" sid="5818390081600736" type="turret">
+                                    <param id="0" name="Instance variable">range</param>
+                                    <param id="1" name="Value">50</param>
+                                </action>
+                                <action id="-11" name="Subtract from" sid="5560741091681067" type="System">
+                                    <param id="0" name="Variable">money</param>
+                                    <param id="1" name="Value">WATERTURRETCOST</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="6165947451599108" type="TurretBase">
+                                    <param id="0" name="Instance variable">openScreen</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-11" name="Add to" sid="9885770176098484" type="TurretBase">
+                                    <param id="0" name="Instance variable">cost</param>
+                                    <param id="1" name="Value">WATERTURRETCOST / 2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="6007224435095772">
+                    <conditions>
+                        <condition id="7" name="Cursor is over object" sid="7021349587484863" type="Mouse">
+                            <param id="0" name="Object">UpgradeButtonFire</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="1207875717810616" type="UpgradeButtonFire">
+                            <param id="0" name="Object">TextUpgrade</param>
+                            <param id="1" name="Layer">GAMELAYER</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="650864130949823" type="TextUpgrade">
+                            <param id="0" name="Y">TextUpgrade.Y - UpgradeButtonFire.Y </param>
+                        </action>
+                        <action id="0" name="Set text" sid="2844017239124098" type="TextUpgrade">
+                            <param id="0" name="Text">&quot;Fire tower. Burn enemies with extra damage.&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="8104556825401943">
+                    <conditions>
+                        <condition id="7" inverted="1" name="Cursor is over object" sid="6426384368839683" type="Mouse">
+                            <param id="0" name="Object">UpgradeButtonFire</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="2154257354969277" type="TextUpgrade" />
+                    </actions>
+                </event-block>
+                <event-block sid="1423329096310155">
+                    <conditions>
+                        <condition id="7" name="Cursor is over object" sid="1421647842386806" type="Mouse">
+                            <param id="0" name="Object">UpgradeScreenWater</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="2774912884588577" type="UpgradeScreenWater">
+                            <param id="0" name="Object">TextUpgrade2</param>
+                            <param id="1" name="Layer">GAMELAYER</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="126142864417458" type="TextUpgrade2">
+                            <param id="0" name="Y">TextUpgrade2.Y - UpgradeScreenWater.Y </param>
+                        </action>
+                        <action id="0" name="Set text" sid="4533234602958842" type="TextUpgrade2">
+                            <param id="0" name="Text">&quot;Water tower. Fire fast because that&apos;s what water does..&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="5036340614752872">
+                    <conditions>
+                        <condition id="7" inverted="1" name="Cursor is over object" sid="1941290867917044" type="Mouse">
+                            <param id="0" name="Object">UpgradeScreenWater</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="1939713058966669" type="TextUpgrade2" />
+                    </actions>
                 </event-block>
             </sub-events>
         </event-group>
