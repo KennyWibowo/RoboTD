@@ -15,13 +15,13 @@
    id="svg4072"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="New document 25">
+   sodipodi:docname="Background1.svg">
   <defs
      id="defs4074">
     <linearGradient
        id="linearGradient4082">
       <stop
-         style="stop-color:#9c9c9c;stop-opacity:1;"
+         style="stop-color:#3e3e3e;stop-opacity:1;"
          offset="0"
          id="stop4084" />
       <stop
@@ -33,10 +33,10 @@
        inkscape:collect="always"
        xlink:href="#linearGradient4082"
        id="radialGradient4090"
-       cx="747.7807"
-       cy="634.00769"
-       fx="747.7807"
-       fy="634.00769"
+       cx="777.41272"
+       cy="636.56995"
+       fx="777.41272"
+       fy="636.56995"
        r="960"
        gradientTransform="matrix(0.02166774,1.2696056,-2.0904004,0.03566191,2365.3031,-395.23158)"
        gradientUnits="userSpaceOnUse" />
@@ -67,7 +67,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
