@@ -81,11 +81,55 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
+                        <x>704</x>
+                        <y>752</y>
+                        <z>0</z>
+                        <width>1344</width>
+                        <height>48</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.5</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="TopMenu" uid="28">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-animation>Default</initial-animation>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
                         <x>1208</x>
                         <y>384</y>
                         <z>0</z>
                         <width>336</width>
                         <height>768</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.5</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="TopMenu" uid="34">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-animation>Default</initial-animation>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>32</x>
+                        <y>424.5</y>
+                        <z>0</z>
+                        <width>64</width>
+                        <height>691</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -274,10 +318,10 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>952</x>
+                        <x>944</x>
                         <y>624</y>
                         <z>0</z>
-                        <width>80</width>
+                        <width>64</width>
                         <height>64</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
@@ -2019,50 +2063,6 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="TopMenu" uid="28">
-                    <properties>
-                        <initial-visibility>Visible</initial-visibility>
-                        <initial-animation>Default</initial-animation>
-                        <initial-frame>0</initial-frame>
-                        <collisions>Enabled</collisions>
-                    </properties>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>32</x>
-                        <y>424</y>
-                        <z>0</z>
-                        <width>64</width>
-                        <height>704</height>
-                        <depth>0</depth>
-                        <hotspotX>0.5</hotspotX>
-                        <hotspotY>0.5</hotspotY>
-                        <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
-                <instance type="TopMenu" uid="34">
-                    <properties>
-                        <initial-visibility>Visible</initial-visibility>
-                        <initial-animation>Default</initial-animation>
-                        <initial-frame>0</initial-frame>
-                        <collisions>Enabled</collisions>
-                    </properties>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>704</x>
-                        <y>752</y>
-                        <z>0</z>
-                        <width>1344</width>
-                        <height>48</height>
-                        <depth>0</depth>
-                        <hotspotX>0.5</hotspotX>
-                        <hotspotY>0.5</hotspotY>
-                        <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
                 <instance type="LeftTurn" uid="41">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
@@ -2625,9 +2625,9 @@
                 </instance>
                 <instance type="RoboTDTitle" uid="122">
                     <properties>
-                        <text>Robot TD</text>
+                        <text>Robot            TD</text>
                         <initial-visibility>Visible</initial-visibility>
-                        <font>Blackoak Std,-60,900,1</font>
+                        <font>Book Antiqua,-60,700,1</font>
                         <color>255,204,102</color>
                         <horizontal-alignment>Left</horizontal-alignment>
                         <vertical-alignment>Top</vertical-alignment>
@@ -2638,11 +2638,11 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>1072</x>
-                        <y>48</y>
+                        <x>1120</x>
+                        <y>16</y>
                         <z>0</z>
-                        <width>304</width>
-                        <height>112</height>
+                        <width>192</width>
+                        <height>160</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
@@ -2670,6 +2670,33 @@
                         <z>0</z>
                         <width>200</width>
                         <height>30</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="ResetText" uid="124">
+                    <properties>
+                        <text>GAME OVER</text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Lucida Console,-240,700,0</font>
+                        <color>255,0,204</color>
+                        <horizontal-alignment>Left</horizontal-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
+                        <hotspot>Top-left</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>432</x>
+                        <y>928</y>
+                        <z>0</z>
+                        <width>624</width>
+                        <height>512</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
@@ -2724,14 +2751,14 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>683</x>
-                        <y>384</y>
+                        <x>736</x>
+                        <y>256</y>
                         <z>0</z>
-                        <width>384</width>
-                        <height>176</height>
+                        <width>608</width>
+                        <height>112</height>
                         <depth>0</depth>
-                        <hotspotX>0.5</hotspotX>
-                        <hotspotY>0.5</hotspotY>
+                        <hotspotX>0.586206913</hotspotX>
+                        <hotspotY>-0.754966915</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
@@ -2751,8 +2778,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>624</x>
-                        <y>352</y>
+                        <x>638</x>
+                        <y>366</y>
                         <z>0</z>
                         <width>112</width>
                         <height>80</height>
@@ -2763,29 +2790,24 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="RobotTitleText" uid="50">
+                <instance type="FrontPageTitle" uid="125">
                     <properties>
-                        <text>Robot Tower Defense</text>
                         <initial-visibility>Visible</initial-visibility>
-                        <font>Century,-47,700,0</font>
-                        <color>255,255,255</color>
-                        <horizontal-alignment>Left</horizontal-alignment>
-                        <vertical-alignment>Top</vertical-alignment>
-                        <hotspot>Top-left</hotspot>
-                        <wrapping>Word</wrapping>
-                        <line-height>0</line-height>
+                        <initial-animation>Default</initial-animation>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
                     </properties>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>528</x>
-                        <y>64</y>
+                        <x>1120</x>
+                        <y>320</y>
                         <z>0</z>
-                        <width>336</width>
-                        <height>144</height>
+                        <width>1085</width>
+                        <height>97</height>
                         <depth>0</depth>
-                        <hotspotX>0</hotspotX>
-                        <hotspotY>0</hotspotY>
+                        <hotspotX>0.876497686</hotspotX>
+                        <hotspotY>2.082474232</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
                     </world>

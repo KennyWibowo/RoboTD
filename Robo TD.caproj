@@ -267,7 +267,8 @@
         <object-type name="Exit" sid="3569968701891656">
             <plugin id="Sprite" />
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="9908380550458269" speed="5">
+                <animation framecount="2" loop="1" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="9908380550458269" speed="1">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
@@ -306,7 +307,7 @@
             <plugin id="Sprite" />
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="7616788946165051" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.586207" hotspotY="-0.754967" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -646,6 +647,17 @@
         </object-type>
         <object-type name="costText" sid="1268889719483577">
             <plugin id="Text" />
+        </object-type>
+        <object-type name="ResetText" sid="3943910916206491">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="FrontPageTitle" sid="5181630235461892">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="6044542750256374" speed="5">
+                    <frame duration="1" hotspotX="0.876498" hotspotY="2.08247" />
+                </animation>
+            </animation-folder>
         </object-type>
     </object-folder>
     <families />

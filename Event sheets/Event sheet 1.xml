@@ -15,7 +15,7 @@
         <variable constant="0" name="lives" sid="1090205050922854" static="0" type="number">3</variable>
         <variable comment="layer that game is on" constant="1" name="gameLayer" sid="2135917474219038" static="0" type="number">2</variable>
         <comment>Issue: how to change camera view</comment>
-        <event-group description="Events of Enemy" sid="7112988378609428" title="Enemy">
+        <event-group collapsed="1" description="Events of Enemy" sid="7112988378609428" title="Enemy">
             <sub-events>
                 <event-block sid="3926468169512404">
                     <conditions>
@@ -172,7 +172,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="System events based on timer" sid="8990948877404075" title="Timer">
+        <event-group collapsed="1" description="System events based on timer" sid="8990948877404075" title="Timer">
             <sub-events>
                 <event-block sid="5972979305895289">
                     <conditions>
@@ -229,7 +229,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="Generic turret" sid="7033576988998338" title="Turret">
+        <event-group collapsed="1" description="Generic turret" sid="7033576988998338" title="Turret">
             <sub-events>
                 <variable comment="cooldown" constant="1" name="maxCD" sid="8467442308025444" static="0" type="number">1</variable>
                 <comment>Rotate 360 degrees for immediate rotation towards enemy. Can be lowered, but will greatly lower accuracy.</comment>
@@ -331,6 +331,25 @@
                             <param id="0" name="Instance variable">Health</param>
                             <param id="1" name="Value">Enemy.Health + level * 4</param>
                         </action>
+                        <action id="5" name="Set frame" sid="6593370361192141" type="Spawner">
+                            <param id="0" name="Frame number">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="8833379425196989">
+                    <conditions>
+                        <condition id="3" name="Compare frame" sid="7134418498719382" type="Spawner">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Number">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Wait" sid="5584318730941697" type="System">
+                            <param id="0" name="Seconds">0.5</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="9193988299569668" type="Spawner">
+                            <param id="0" name="Frame number">0</param>
+                        </action>
                     </actions>
                 </event-block>
                 <event-block sid="6445362336042943">
@@ -422,7 +441,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="a turret that appears in the menu" sid="822454916858077" title="MenuTurret">
+        <event-group collapsed="1" description="a turret that appears in the menu" sid="822454916858077" title="MenuTurret">
             <sub-events>
                 <event-block sid="54401224680221">
                     <conditions>
@@ -482,36 +501,44 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-block sid="2569309090721363">
-            <conditions>
-                <condition id="0" name="On collision with another object" sid="5839504146250696" type="Enemy">
-                    <param id="0" name="Object">Exit</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="-9" name="Destroy" sid="9263369342007563" type="Enemy" />
-                <action id="-11" name="Subtract from" sid="6713503276724464" type="System">
-                    <param id="0" name="Variable">lives</param>
-                    <param id="1" name="Value">1</param>
-                </action>
-                <action id="-11" name="Subtract from" sid="3701451515495324" type="System">
-                    <param id="0" name="Variable">numEnemies</param>
-                    <param id="1" name="Value">1</param>
-                </action>
-            </actions>
-        </event-block>
-        <event-block sid="6717546056354239">
-            <conditions>
-                <condition id="-14" name="Compare variable" sid="9381198222114861" type="System">
-                    <param id="0" name="Variable">lives</param>
-                    <param id="1" name="Comparison">3</param>
-                    <param id="2" name="Value">0</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="-9" name="Destroy" sid="6596936831591699" type="Exit" />
-            </actions>
-        </event-block>
+        <event-group collapsed="1" description="events related to exit" sid="8776022141646016" title="Exit">
+            <sub-events>
+                <event-block sid="2569309090721363">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="5839504146250696" type="Enemy">
+                            <param id="0" name="Object">Exit</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="9263369342007563" type="Enemy" />
+                        <action id="-11" name="Subtract from" sid="6713503276724464" type="System">
+                            <param id="0" name="Variable">lives</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-11" name="Subtract from" sid="3701451515495324" type="System">
+                            <param id="0" name="Variable">numEnemies</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="6717546056354239">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="9381198222114861" type="System">
+                            <param id="0" name="Variable">lives</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="6596936831591699" type="Exit" />
+                        <action id="-3" name="Set position" sid="3810644256904239" type="ResetText">
+                            <param id="0" name="X">1366 / 2</param>
+                            <param id="1" name="Y">768 / 2</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
         <event-group collapsed="1" description="" sid="2448191717597306" title="StartMenu">
             <sub-events>
                 <event-block sid="5986089044474908">
@@ -538,7 +565,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="" sid="932306576524389" title="OnLoad Events">
+        <event-group collapsed="1" description="" sid="932306576524389" title="OnLoad Events">
             <sub-events>
                 <event-block sid="9536823174745537">
                     <conditions>
@@ -590,7 +617,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="" sid="9769340815109584" title="RangeCircle">
+        <event-group collapsed="1" description="" sid="9769340815109584" title="RangeCircle">
             <sub-events>
                 <event-block sid="6969603488785622">
                     <conditions>
@@ -650,7 +677,7 @@
                                 </action>
                                 <action id="-10" name="Set value" sid="1393555166553645" type="Spawner">
                                     <param id="0" name="Instance variable">NumberOfSpawns</param>
-                                    <param id="1" name="Value">Spawner.baseNumSpawns + level</param>
+                                    <param id="1" name="Value">Spawner.baseNumSpawns </param>
                                 </action>
                                 <action id="-9" name="Set value" sid="279772811745781" type="System">
                                     <param id="0" name="Variable">midLevelActions</param>
@@ -777,7 +804,7 @@
                             <param id="1" name="Y">UpgradeScreen.Y - 40</param>
                         </action>
                         <action id="-3" name="Set position" sid="2094455577741174" type="UpgradeButtonAir">
-                            <param id="0" name="X">UpgradeScreen.X - 80</param>
+                            <param id="0" name="X">UpgradeScreen.X + 80</param>
                             <param id="1" name="Y">UpgradeScreen.Y - 40</param>
                         </action>
                         <action id="-3" name="Set position" sid="3435211654896581" type="UpgradeButtonEarth">
