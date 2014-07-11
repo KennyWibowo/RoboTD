@@ -20,7 +20,6 @@
         <plugin author="Scirra" id="Spritefont2" version="1">Sprite font</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TextBox" version="1">Text box</plugin>
-        <plugin author="Scirra" id="Tilemap" version="1">Tilemap</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
         <plugin author="Zack0Wack0/Scirra" id="WebStorage" version="1">WebStorage</plugin>
         <plugin author="Scirra.com" id="win8" version="1">Windows 8</plugin>
@@ -40,16 +39,16 @@
         <width>1366</width>
         <height>768</height>
     </window-size>
-    <pixel-rounding>0</pixel-rounding>
+    <pixel-rounding>1</pixel-rounding>
     <use-loader-layout>0</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">Yes</prop>
         <prop name="Enable WebGL">On</prop>
-        <prop name="Fullscreen in browser">Letterbox scale</prop>
+        <prop name="Fullscreen in browser">Letterbox integer scale</prop>
         <prop name="Hide address bar">No</prop>
         <prop name="Loader style">Progress bar &amp; logo</prop>
         <prop name="Preview browser">(default)</prop>
-        <prop name="Sampling">Linear</prop>
+        <prop name="Sampling">Point</prop>
         <prop name="Use iOS retina display">Yes</prop>
     </configuration-settings>
     <object-folder expanded="1">
@@ -120,15 +119,15 @@
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="447035252484696" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
-                        <collision-poly>
-                            <point x="0" y="1" />
-                            <point x="0" y="0" />
-                            <point x="1" y="0" />
-                            <point x="1" y="1" />
-                        </collision-poly>
-                    </frame>
+                <animation framecount="8" loop="1" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="447035252484696" speed="10">
+                    <frame duration="1" hotspotX="0.47619" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.510204" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.525424" hotspotY="0.490566" />
+                    <frame duration="1" hotspotX="0.510204" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.47619" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.510204" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.525424" hotspotY="0.490566" />
+                    <frame duration="1" hotspotX="0.510204" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -145,6 +144,7 @@
             <instance-variables>
                 <instance-variable comment="cooldown between shots" name="cooldown" sid="228728919200639" type="number" />
                 <instance-variable comment="range of turret" name="range" sid="7148245398006668" type="number" />
+                <instance-variable comment="damage that bullets deal" name="damage" sid="1081923148687153" type="number" />
             </instance-variables>
             <behaviors>
                 <behavior-type name="Turret" sid="7414473844469657">
@@ -152,8 +152,8 @@
                 </behavior-type>
             </behaviors>
             <container>
-                <type>turret</type>
                 <type>TurretBase</type>
+                <type>turret</type>
             </container>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="7960570812626184" speed="5">
@@ -165,6 +165,9 @@
                             <point x="0" y="0" />
                         </collision-poly>
                     </frame>
+                </animation>
+                <animation framecount="1" loop="0" name="FireTurret" pingpong="0" repeatcount="1" repeatto="0" sid="6231032370508717" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -206,6 +209,7 @@
             <instance-variables>
                 <instance-variable comment="time in between spawns" name="cooldown" sid="3203068602724473" type="number" />
                 <instance-variable comment="number of enemies left" name="NumberOfSpawns" sid="5470022648105184" type="number" />
+                <instance-variable comment="i&apos;m lazy" name="baseNumSpawns" sid="6863452684190679" type="number" />
             </instance-variables>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1635952336626321" speed="5">
@@ -215,6 +219,9 @@
         </object-type>
         <object-type name="MenuTurret" sid="3805363906990971">
             <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable comment="cost of generic turret" name="cost" sid="9084382455971133" type="number" />
+            </instance-variables>
             <behaviors>
                 <behavior-type name="DragDrop" sid="3352695231772652">
                     <behavior id="DragnDrop" />
@@ -230,14 +237,6 @@
             <plugin id="Sprite" />
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="3635286574544944" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="RightMenu" sid="3606777117744766">
-            <plugin id="Sprite" />
-            <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="8555710140481573" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
@@ -263,16 +262,17 @@
         </object-type>
         <object-type name="TowerScreen" sid="7159680910220274">
             <plugin id="Sprite" />
+            <container>
+                <type>TowerScreen</type>
+                <type>TextScrnButton</type>
+                <type>TextScrnButton2</type>
+                <type>TextScrnButton3</type>
+            </container>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="4973893321657949" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
-        </object-type>
-        <object-type name="Tilemap" sid="9595197959105554">
-            <plugin id="Tilemap" />
-            <texture />
-            <tiles />
         </object-type>
         <object-type name="camera" sid="7302811292308046">
             <plugin id="Sprite" />
@@ -315,12 +315,18 @@
         </object-type>
         <object-type name="TurretBase" sid="1454267975327483">
             <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="openScreen" sid="4886008800252502" type="number" />
+            </instance-variables>
             <container>
-                <type>turret</type>
                 <type>TurretBase</type>
+                <type>turret</type>
             </container>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="5229290718897372" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="FireTurret" pingpong="0" repeatcount="1" repeatto="0" sid="6572425121583192" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
@@ -359,6 +365,142 @@
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
+        </object-type>
+        <object-type name="TextScrnButton" sid="5479658786860941">
+            <plugin id="Sprite" />
+            <container>
+                <type>TowerScreen</type>
+                <type>TextScrnButton</type>
+                <type>TextScrnButton2</type>
+                <type>TextScrnButton3</type>
+            </container>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1551507975021722" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="TextScrnButton2" sid="7787133525199715">
+            <plugin id="Sprite" />
+            <container>
+                <type>TowerScreen</type>
+                <type>TextScrnButton</type>
+                <type>TextScrnButton2</type>
+                <type>TextScrnButton3</type>
+            </container>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="4599581032109153" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="TextScrnButton3" sid="8239146532932693">
+            <plugin id="Sprite" />
+            <container>
+                <type>TowerScreen</type>
+                <type>TextScrnButton</type>
+                <type>TextScrnButton2</type>
+                <type>TextScrnButton3</type>
+            </container>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="7971551751972238" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Background" sid="6295653002837207">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="6136447009977647" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="RangeCircle" sid="2363487430846563">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="3252825049911409" speed="5">
+                    <frame duration="1" hotspotX="0.522727" hotspotY="0.530303" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="TimeText" sid="7675770517892215">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="tileBotLeft" sid="359321732200703">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="2517948258830909" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="tileLeftRight" sid="664846711194122">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="4674623033211012" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="TileTopLeft" sid="8800590870891414">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="5304482585947316" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="tileBotRight" sid="3321489359303777">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="87935163341651" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="tileUpBot" sid="4541472972539209">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="205081119348285" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="tileTopRight" sid="4090185765967077">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="829418586288008" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="UpgradeScreen" sid="9045467308203747">
+            <plugin id="Sprite" />
+            <container>
+                <type>UpgradeScreen</type>
+                <type>UpgradeButtonFire</type>
+            </container>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="7384552073121253" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="UpgradeButtonFire" sid="7439680248198337">
+            <plugin id="Sprite" />
+            <container>
+                <type>UpgradeScreen</type>
+                <type>UpgradeButtonFire</type>
+            </container>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1658962545462511" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="TextMoney" sid="578654558507793">
+            <plugin id="Text" />
         </object-type>
     </object-folder>
     <families />
