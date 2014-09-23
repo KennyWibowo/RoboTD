@@ -1,4 +1,6 @@
-MicrosoftTD
+RoboTD
 ===========
 
-A Tower Defense game with tarot cards and elemental turrets
+A simple Tower Defense game with elemental turrets
+Game hosted here:
+http://robotowerdefense.azurewebsites.net/
